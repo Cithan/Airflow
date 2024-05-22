@@ -1,0 +1,110 @@
+[2024-05-06T15:59:59.221+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-05-06T15:59:59.277+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: example.snowflake_example manual__2024-05-06T15:59:48.745231+00:00 [queued]>
+[2024-05-06T15:59:59.297+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: example.snowflake_example manual__2024-05-06T15:59:48.745231+00:00 [queued]>
+[2024-05-06T15:59:59.298+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 1
+[2024-05-06T15:59:59.327+0000] {taskinstance.py:2327} INFO - Executing <Task(SnowflakeOperator): snowflake_example> on 2024-05-06 15:59:48.745231+00:00
+[2024-05-06T15:59:59.337+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=391) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-05-06T15:59:59.340+0000] {standard_task_runner.py:63} INFO - Started process 400 to run task
+[2024-05-06T15:59:59.341+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'example', 'snowflake_example', 'manual__2024-05-06T15:59:48.745231+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/create_table.py', '--cfg-path', '/tmp/tmpbjaim21m']
+[2024-05-06T15:59:59.343+0000] {standard_task_runner.py:91} INFO - Job 5: Subtask snowflake_example
+[2024-05-06T15:59:59.441+0000] {task_command.py:426} INFO - Running <TaskInstance: example.snowflake_example manual__2024-05-06T15:59:48.745231+00:00 [running]> on host 3078ffe3180a
+[2024-05-06T15:59:59.597+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='example' AIRFLOW_CTX_TASK_ID='snowflake_example' AIRFLOW_CTX_EXECUTION_DATE='2024-05-06T15:59:48.745231+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-05-06T15:59:48.745231+00:00'
+[2024-05-06T15:59:59.599+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-05-06T15:59:59.601+0000] {sql.py:276} INFO - Executing: 
+ create or replace table dbt_snowflake.public.snowflake_*** (
+ id int,
+ first_name varchar(50),
+ last_name varchar(50)
+ );
+[2024-05-06T15:59:59.619+0000] {base.py:84} INFO - Using connection ID 'snowflake_conn' for task execution.
+[2024-05-06T15:59:59.632+0000] {base.py:84} INFO - Using connection ID 'snowflake_conn' for task execution.
+[2024-05-06T15:59:59.633+0000] {connection.py:386} INFO - Snowflake Connector for Python Version: 3.7.1, Python Version: 3.12.2, Platform: Linux-5.15.146.1-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[2024-05-06T15:59:59.635+0000] {connection.py:1211} INFO - This connection is in OCSP Fail Open Mode. TLS Certificates would be checked for validity and revocation status. Any other Certificate Revocation related exceptions or OCSP Responder failures would be disregarded in favor of connectivity.
+[2024-05-06T15:59:59.636+0000] {connection.py:1221} INFO - THIS CONNECTION IS IN INSECURE MODE. IT MEANS THE CERTIFICATE WILL BE VALIDATED BUT THE CERTIFICATE REVOCATION STATUS WILL NOT BE CHECKED.
+[2024-05-06T16:00:00.616+0000] {ssl_wrap_socket.py:100} INFO - THIS CONNECTION IS IN INSECURE MODE. IT MEANS THE CERTIFICATE WILL BE VALIDATED BUT THE CERTIFICATE REVOCATION STATUS WILL NOT BE CHECKED.
+[2024-05-06T16:00:00.631+0000] {connection.py:547} WARNING - Certificate did not match expected hostname: mddazww.zz16702.snowflakecomputing.com. Certificate: {'subject': ((('commonName', '*.prod3.us-west-2.snowflakecomputing.com'),),), 'subjectAltName': [('DNS', '*.prod3.us-west-2.snowflakecomputing.com'), ('DNS', '*.us-west-2.snowflakecomputing.com'), ('DNS', '*.global.snowflakecomputing.com'), ('DNS', '*.snowflakecomputing.com'), ('DNS', '*.prod3.us-west-2.aws.snowflakecomputing.com')]}
+[2024-05-06T16:00:00.633+0000] {connectionpool.py:824} WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(CertificateError("hostname 'mddazww.zz16702.snowflakecomputing.com' doesn't match either of '*.prod3.us-west-2.snowflakecomputing.com', '*.us-west-2.snowflakecomputing.com', '*.global.snowflakecomputing.com', '*.snowflakecomputing.com', '*.prod3.us-west-2.aws.snowflakecomputing.com'"))': /session/v1/login-request?request_id=08bf0258-fad1-4b49-9639-a9f209400dc8&databaseName=DBT_SNOWFLAKE&schemaName=&warehouse=DBT_DEV_WH&roleName=&request_guid=bed3fc3e-5d62-4002-9d7a-75f09172b4f1
+[2024-05-06T16:00:01.347+0000] {ssl_wrap_socket.py:100} INFO - THIS CONNECTION IS IN INSECURE MODE. IT MEANS THE CERTIFICATE WILL BE VALIDATED BUT THE CERTIFICATE REVOCATION STATUS WILL NOT BE CHECKED.
+[2024-05-06T16:00:01.349+0000] {connection.py:547} WARNING - Certificate did not match expected hostname: mddazww.zz16702.snowflakecomputing.com. Certificate: {'subject': ((('commonName', '*.prod3.us-west-2.snowflakecomputing.com'),),), 'subjectAltName': [('DNS', '*.prod3.us-west-2.snowflakecomputing.com'), ('DNS', '*.us-west-2.snowflakecomputing.com'), ('DNS', '*.global.snowflakecomputing.com'), ('DNS', '*.snowflakecomputing.com'), ('DNS', '*.prod3.us-west-2.aws.snowflakecomputing.com')]}
+[2024-05-06T16:00:01.359+0000] {network.py:1029} ERROR - Failed to get the response. Hanging? method: post, url: https://MDDAZWW.ZZ16702.snowflakecomputing.com:443/session/v1/login-request?request_id=08bf0258-fad1-4b49-9639-a9f209400dc8&databaseName=DBT_SNOWFLAKE&schemaName=&warehouse=DBT_DEV_WH&roleName=&request_guid=bed3fc3e-5d62-4002-9d7a-75f09172b4f1, headers:{'Content-Type': 'application/json', 'accept': 'application/snowflake', 'User-Agent': 'PythonConnector/3.7.1 (Linux-5.15.146.1-microsoft-standard-WSL2-x86_64-with-glibc2.36) CPython/3.12.2', 'Content-Encoding': 'gzip'}, data: {"data": {"CLIENT_APP_ID": "PythonConnector", "CLIENT_APP_VERSION": "3.7.1", "SVN_REVISION": null, "ACCOUNT_NAME": "MDDAZWW", "LOGIN_NAME": "cithan", "CLIENT_ENVIRONMENT": {"APPLICATION": "AIRFLOW", "OS": "Linux", "OS_VERSION": "Linux-5.15.146.1-microsoft-standard-WSL2-x86_64-with-glibc2.36", "PYTHON_VERSION": "3.12.2", "PYTHON_RUNTIME": "CPython", "PYTHON_COMPILER": "GCC 12.2.0", "OCSP_MODE": "INSECURE", "TRACING": 20, "LOGIN_TIMEOUT": null, "NETWORK_TIMEOUT": null, "SOCKET_TIMEOUT": null}, "PASSWORD": "**** "SESSION_PARAMETERS": {"CLIENT_PREFETCH_THREADS": 4}}}
+[2024-05-06T16:00:03.602+0000] {ssl_wrap_socket.py:100} INFO - THIS CONNECTION IS IN INSECURE MODE. IT MEANS THE CERTIFICATE WILL BE VALIDATED BUT THE CERTIFICATE REVOCATION STATUS WILL NOT BE CHECKED.
+[2024-05-06T16:00:03.604+0000] {connection.py:547} WARNING - Certificate did not match expected hostname: mddazww.zz16702.snowflakecomputing.com. Certificate: {'subject': ((('commonName', '*.prod3.us-west-2.snowflakecomputing.com'),),), 'subjectAltName': [('DNS', '*.prod3.us-west-2.snowflakecomputing.com'), ('DNS', '*.us-west-2.snowflakecomputing.com'), ('DNS', '*.global.snowflakecomputing.com'), ('DNS', '*.snowflakecomputing.com'), ('DNS', '*.prod3.us-west-2.aws.snowflakecomputing.com')]}
+[2024-05-06T16:00:03.605+0000] {connectionpool.py:824} WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(CertificateError("hostname 'mddazww.zz16702.snowflakecomputing.com' doesn't match either of '*.prod3.us-west-2.snowflakecomputing.com', '*.us-west-2.snowflakecomputing.com', '*.global.snowflakecomputing.com', '*.snowflakecomputing.com', '*.prod3.us-west-2.aws.snowflakecomputing.com'"))': /session/v1/login-request?request_id=d51d1788-b19d-4779-a48a-2c72fcc16636&databaseName=DBT_SNOWFLAKE&schemaName=&warehouse=DBT_DEV_WH&roleName=&request_guid=ef653a1a-0a3f-4048-a0f0-78eee3eecc52
+[2024-05-06T16:00:04.321+0000] {ssl_wrap_socket.py:100} INFO - THIS CONNECTION IS IN INSECURE MODE. IT MEANS THE CERTIFICATE WILL BE VALIDATED BUT THE CERTIFICATE REVOCATION STATUS WILL NOT BE CHECKED.
+[2024-05-06T16:00:04.323+0000] {connection.py:547} WARNING - Certificate did not match expected hostname: mddazww.zz16702.snowflakecomputing.com. Certificate: {'subject': ((('commonName', '*.prod3.us-west-2.snowflakecomputing.com'),),), 'subjectAltName': [('DNS', '*.prod3.us-west-2.snowflakecomputing.com'), ('DNS', '*.us-west-2.snowflakecomputing.com'), ('DNS', '*.global.snowflakecomputing.com'), ('DNS', '*.snowflakecomputing.com'), ('DNS', '*.prod3.us-west-2.aws.snowflakecomputing.com')]}
+[2024-05-06T16:00:04.336+0000] {network.py:1029} ERROR - Failed to get the response. Hanging? method: post, url: https://MDDAZWW.ZZ16702.snowflakecomputing.com:443/session/v1/login-request?request_id=d51d1788-b19d-4779-a48a-2c72fcc16636&databaseName=DBT_SNOWFLAKE&schemaName=&warehouse=DBT_DEV_WH&roleName=&request_guid=ef653a1a-0a3f-4048-a0f0-78eee3eecc52, headers:{'Content-Type': 'application/json', 'accept': 'application/snowflake', 'User-Agent': 'PythonConnector/3.7.1 (Linux-5.15.146.1-microsoft-standard-WSL2-x86_64-with-glibc2.36) CPython/3.12.2', 'Content-Encoding': 'gzip'}, data: {"data": {"CLIENT_APP_ID": "PythonConnector", "CLIENT_APP_VERSION": "3.7.1", "SVN_REVISION": null, "ACCOUNT_NAME": "MDDAZWW", "LOGIN_NAME": "cithan", "CLIENT_ENVIRONMENT": {"APPLICATION": "AIRFLOW", "OS": "Linux", "OS_VERSION": "Linux-5.15.146.1-microsoft-standard-WSL2-x86_64-with-glibc2.36", "PYTHON_VERSION": "3.12.2", "PYTHON_RUNTIME": "CPython", "PYTHON_COMPILER": "GCC 12.2.0", "OCSP_MODE": "INSECURE", "TRACING": 20, "LOGIN_TIMEOUT": null, "NETWORK_TIMEOUT": null, "SOCKET_TIMEOUT": null}, "PASSWORD": "**** "SESSION_PARAMETERS": {"CLIENT_PREFETCH_THREADS": 4}}}
+[2024-05-06T16:00:04.340+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-05-06T16:00:04.341+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/connection.py", line 1345, in _authenticate
+    auth.authenticate(
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/auth/_auth.py", line 250, in authenticate
+    ret = self._rest._post_request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/network.py", line 734, in _post_request
+    ret = self.fetch(
+          ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/network.py", line 843, in fetch
+    ret = self._request_exec_wrapper(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/network.py", line 979, in _request_exec_wrapper
+    raise e
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/network.py", line 895, in _request_exec_wrapper
+    self._handle_unknown_error(method, full_url, headers, data, conn)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/network.py", line 1034, in _handle_unknown_error
+    Error.errorhandler_wrapper(
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 290, in errorhandler_wrapper
+    handed_over = Error.hand_to_other_handler(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 348, in hand_to_other_handler
+    connection.errorhandler(connection, cursor, error_class, error_value)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 221, in default_errorhandler
+    raise error_class(
+snowflake.connector.errors.OperationalError: 250003: 250003: Failed to get the response. Hanging? method: post, url: https://MDDAZWW.ZZ16702.snowflakecomputing.com:443/session/v1/login-request?request_id=08bf0258-fad1-4b49-9639-a9f209400dc8&databaseName=DBT_SNOWFLAKE&schemaName=&warehouse=DBT_DEV_WH&roleName=&request_guid=bed3fc3e-5d62-4002-9d7a-75f09172b4f1
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/common/sql/operators/sql.py", line 282, in execute
+    output = hook.run(
+             ^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/snowflake/hooks/snowflake.py", line 384, in run
+    with closing(self.get_conn()) as conn:
+                 ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/snowflake/hooks/snowflake.py", line 278, in get_conn
+    conn = connector.connect(**conn_config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/__init__.py", line 54, in Connect
+    return SnowflakeConnection(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/connection.py", line 429, in __init__
+    self.connect(**kwargs)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/connection.py", line 719, in connect
+    self.__open_connection()
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/connection.py", line 1045, in __open_connection
+    self.authenticate_with_retry(self.auth_class)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/connection.py", line 1317, in authenticate_with_retry
+    self._authenticate(auth_instance)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/connection.py", line 1389, in _authenticate
+    raise auth_op from e
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/connection.py", line 1366, in _authenticate
+    auth_instance.handle_timeout(
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/auth/by_plugin.py", line 212, in handle_timeout
+    raise error
+snowflake.connector.errors.OperationalError: 250001: 250001: Could not connect to Snowflake backend after 2 attempt(s).Aborting
+[2024-05-06T16:00:04.356+0000] {taskinstance.py:1205} INFO - Marking task as FAILED. dag_id=example, task_id=snowflake_example, execution_date=20240506T155948, start_date=20240506T155959, end_date=20240506T160004
+[2024-05-06T16:00:04.382+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 5 for task snowflake_example (250001: 250001: Could not connect to Snowflake backend after 2 attempt(s).Aborting; 400)
+[2024-05-06T16:00:04.418+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-05-06T16:00:04.446+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-05-06T16:00:04.449+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
